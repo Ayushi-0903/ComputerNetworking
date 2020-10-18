@@ -4,7 +4,7 @@ from socket import *
 def smtp_client(port=1025, mailserver='127.0.0.1'):
     msg = "\r\n My message"
     endmsg = "\r\n.\r\n"
-
+    username="gupta,ashi111@gmail.com"
     # Choose a mail server (e.g. Google mail server) if you want to verify the script beyond GradeScope
 
     # Create socket called clientSocket and establish a TCP connection with mailserver and port
@@ -27,7 +27,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Send MAIL FROM command and print server response.
     # Fill in start
-    mail_command = 'MAIL FROM: <gupta.ashi111@gmail.com>\r\n'
+    mail_command = 'MAIL FROM: <'+username+'>\r\n'
     clientSocket.send(mail_command.encode())
     mail_command_recv = clientSocket.recv(1024).decode()
     # Fill in end
@@ -35,7 +35,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
     # Send RCPT TO command and print server response.
     # Fill in start
     #rcptToCommand = 'RCPT TO: <gupta.ashi111@gmail.com>\r\n'
-    rcpt_to= 'RCPT TO: <gupta.ashi111@gmail.com>\r\n'
+    rcpt_to= 'RCPT TO: <'+username+'>\r\n'
     clientSocket.send(rcpt_to.encode())
     rcpt_comment_recv = clientSocket.recv(1024).decode()
     #print(recv3)
