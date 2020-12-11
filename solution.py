@@ -1,65 +1,21 @@
-from socket import *
-
-
-def smtp_client(port=1025, mailserver='127.0.0.1'):
-    msg = "\r\n My message"
-    endmsg = "\r\n.\r\n"
-
-    # Choose a mail server (e.g. Google mail server) if you want to verify the script beyond GradeScope
-
-    # Create socket called clientSocket and establish a TCP connection with mailserver and port
-
-    # Fill in start
-    clientSocket = socket(AF_INET,SOCK_STREAM)
-    clientSocket.connect((mailserver,port))
-    # Fill in end
-
-    recv = clientSocket.recv(1024).decode()
-
-    # Send HELO command and print server response.
-    heloCommand = 'HELO Alice\r\n'
-    clientSocket.send(heloCommand.encode())
-    recv1 = clientSocket.recv(1024).decode()
-
-    # Send MAIL FROM command and print server response.
-    # Fill in start
-    fromCommand = 'MAIL FROM: <agupta0903@gmail.com>\r\n'
-    clientSocket.send(fromCommand.encode())
-    recv2 = clientSocket.recv(1024).decode()
-    # Fill in end
-
-    # Send RCPT TO command and print server response.
-    # Fill in start
-    rcptToCommand = 'RCPT TO: <agupta0903@gmail.com>\r\n'
-    clientSocket.send(rcptToCommand.encode())
-    recv3 = clientSocket.recv(1024).decode()
-    # Fill in end
-
-    # Send DATA command and print server response.
-    # Fill in start
-    dataCommand = 'DATA\r\n'
-    clientSocket.send(dataCommand.encode())
-    recv4 = clientSocket.recv(1024).decode()
-    # Fill in end
-
-    # Send message data.
-    # Fill in start
-    clientSocket.send(msg.encode())
-    # Fill in end
-
-    # Message ends with a single period.
-    # Fill in start
-    clientSocket.send(endmsg.encode())
-    recv5 = clientSocket.recv(1024).decode()
-    # Fill in end
-
-    # Send QUIT command and get server response.
-    # Fill in start
-    clientSocket.send('QUIT\r\n'.encode())
-    recv6 = clientSocket.recv(1024).decode()
-    clientSocket.close()
-    # Fill in end
-
-
-if __name__ == '__main__':
-    smtp_client(1025, '127.0.0.1')
+def welcome_assignment_answers(question):
+    #The student doesn't have to follow the skeleton for this assignment.
+    #Another way to implement is using a "case" statements similar to C.
+    if question == "Are encoding and encryption the same? - Yes/No":
+        answer = "No"
+    elif question == "Is it possible to decrypt a message without a key? - Yes/No":
+        answer = "No"
+    elif question == "Is it possible to decode a message without a key? - Yes/No":
+        answer = "Yes"
+    elif question == "Is a hashed message supposed to be un-hashed? - Yes/No":
+        answer = "No"
+    elif question == "What is the MD5 hashing value to the following message: 'NYU Computer Networking' - Use MD5 hash generator and use the answer in your code":
+        answer = hashlib.md5('NYU Computer Networking'.encode()).hexdigest()
+    elif question == "Is MD5 a secured hashing algorithm? - Yes/No":
+        answer = "No"
+    elif question == "What layer from the TCP/IP model the protocol DHCP belongs to? - The answer should be a numeric number":
+        answer = 5
+    elif question == "What layer of the TCP/IP model the protocol TCP belongs to? - The answer should be a numeric number":
+        answer = 4
+    return(answer)
+# Complete all the questions.
